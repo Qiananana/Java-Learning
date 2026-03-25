@@ -1,28 +1,40 @@
 package com.geek.crypto;
 
+import java.util.Scanner;
+
 /**
- * Main entry point for the Crypto-Toolbox project.
- * Demonstrates the Basic XOR encryption (Level 1).
+ * Personal Crypto-Toolbox: Level 1 Interactive Mode
+ * This module handles user input and demonstrates XOR encryption.
  */
 public class Main {
     public static void main(String[] args) {
+        // Create a scanner instance to capture user input
+        Scanner scanner = new Scanner(System.in);
 
-        // 1. Initialize the shield with a specific key
-        // A 'Shield' is our encryption engine instance
+        // Initialize our encryption engine with a secret key (e.g., 42)
         SimpleShield shield = new SimpleShield(42);
 
-        // 2. The original message we want to protect
-        String plainText = "Hello World!";
-        System.out.println("Original: " + plainText);
+        // --- PHASE 1: User Interaction ---
+        System.out.println("=== 🛡️ Personal Crypto-Toolbox Activated ===");
+        System.out.print("[?] Enter the secret message: ");
 
-        // 3. Encrypt the message
-        // Using the same method for encryption/decryption due to XOR nature
+        // Capture the entire line of input
+        String plainText = scanner.nextLine();
+
+        // --- PHASE 2: Encryption ---
+        System.out.println("\n[*] Encrypting data...");
         String cipherText = shield.xorTransform(plainText);
-        System.out.println("Encrypted (Cipher): " + cipherText);
+        System.out.println("[+] Ciphertext (Hex-ish): " + cipherText);
 
-        // 4. Decrypt the message back to original
+        // --- PHASE 3: Decryption (Verification) ---
+        System.out.println("\n[*] Testing decryption...");
         String decryptedText = shield.xorTransform(cipherText);
-        System.out.println("Decrypted: " + decryptedText);
 
+        // Final Output
+        System.out.println("[✔] Decryption Success: " + decryptedText);
+        System.out.println("===========================================");
+
+        // Close the resource - A must-do for Java exams!
+        scanner.close();
     }
 }
