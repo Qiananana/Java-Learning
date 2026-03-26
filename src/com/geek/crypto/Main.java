@@ -1,40 +1,33 @@
 package com.geek.crypto;
 
-import java.util.Scanner;
-
 /**
- * Personal Crypto-Toolbox: Level 1 Interactive Mode
- * This module handles user input and demonstrates XOR encryption.
+ * Main Application: Entry point for Crypto-Toolbox.
+ * Currently testing Level 2: FileShredder (XOR Binary Processing).
  */
 public class Main {
     public static void main(String[] args) {
-        // Create a scanner instance to capture user input
-        Scanner scanner = new Scanner(System.in);
 
-        // Initialize our encryption engine with a secret key (e.g., 42)
-        SimpleShield shield = new SimpleShield(42);
+        // Initialize FileShield with a custom secret key (e.g., 66)
+        FileShield fileShield = new FileShield(66);
 
-        // --- PHASE 1: User Interaction ---
-        System.out.println("=== 🛡️ Personal Crypto-Toolbox Activated ===");
-        System.out.print("[?] Enter the secret message: ");
+        // Define file paths (Use forward slashes "/" for Java compatibility)
+        String inputPath = "D:/test_data/demo.jpg";
+        String encryptedPath = "D:/test_data/demo_encrypted.jpg";
+        String recoveredPath = "D:/test_data/demo_recovered.jpg";
 
-        // Capture the entire line of input
-        String plainText = scanner.nextLine();
+        System.out.println("--- [Level 2: File Shredder Started] ---");
 
-        // --- PHASE 2: Encryption ---
-        System.out.println("\n[*] Encrypting data...");
-        String cipherText = shield.xorTransform(plainText);
-        System.out.println("[+] Ciphertext (Hex-ish): " + cipherText);
+        // --- TASK 1: ENCRYPTION ---
+        // This will scramble the file bits, making the image unreadable.
+        System.out.println("[*] Encrypting: " + inputPath);
+        fileShield.shred(inputPath, encryptedPath);
 
-        // --- PHASE 3: Decryption (Verification) ---
-        System.out.println("\n[*] Testing decryption...");
-        String decryptedText = shield.xorTransform(cipherText);
+        // --- TASK 2: DECRYPTION ---
+        // Applying XOR again with the same key restores the original bits.
+        System.out.println("[*] Decrypting: " + encryptedPath);
+        fileShield.shred(encryptedPath, recoveredPath);
 
-        // Final Output
-        System.out.println("[✔] Decryption Success: " + decryptedText);
-        System.out.println("===========================================");
-
-        // Close the resource - A must-do for Java exams!
-        scanner.close();
+        System.out.println("--- [All Tasks Completed Successfully] ---");
+        System.out.println("[Check] Look for 'demo_recovered.jpg' in your folder!");
     }
 }
