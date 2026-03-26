@@ -1,33 +1,37 @@
 package com.geek.crypto;
 
+import java.io.IOException;
+
 /**
- * Main Application: Entry point for Crypto-Toolbox.
- * Currently testing Level 2: FileShredder (XOR Binary Processing).
+ * Main Application: Testing Steganography (Level 3)
  */
 public class Main {
     public static void main(String[] args) {
+        PixelWorder pixelWorder = new PixelWorder();
 
-        // Initialize FileShield with a custom secret key (e.g., 66)
-        FileShield fileShield = new FileShield(66);
+        // Define paths for Level 3
+        String originalPng = "D:/test_data/cover.png";
+        String stegoPng = "D:/test_data/secret_image.png";
+        String mySecret = "Java is the best language!";
 
-        // Define file paths (Use forward slashes "/" for Java compatibility)
-        String inputPath = "D:/test_data/demo.jpg";
-        String encryptedPath = "D:/test_data/demo_encrypted.jpg";
-        String recoveredPath = "D:/test_data/demo_recovered.jpg";
+        try {
+            System.out.println("--- [Level 3: Steganography Mission Started] ---");
 
-        System.out.println("--- [Level 2: File Shredder Started] ---");
+            // Step 1: Hide the message into the pixels of the image
+            System.out.println("[*] Embedding secret message...");
+            pixelWorder.embed(originalPng, stegoPng, mySecret);
 
-        // --- TASK 1: ENCRYPTION ---
-        // This will scramble the file bits, making the image unreadable.
-        System.out.println("[*] Encrypting: " + inputPath);
-        fileShield.shred(inputPath, encryptedPath);
+            // Step 2: Extract the hidden message from the stego-image
+            System.out.println("[*] Extracting message from pixels...");
+            String discovered = pixelWorder.extract(stegoPng);
 
-        // --- TASK 2: DECRYPTION ---
-        // Applying XOR again with the same key restores the original bits.
-        System.out.println("[*] Decrypting: " + encryptedPath);
-        fileShield.shred(encryptedPath, recoveredPath);
+            // Output the result
+            System.out.println("[Result] The hidden message was: " + discovered);
+            System.out.println("--- [Mission Accomplished] ---");
 
-        System.out.println("--- [All Tasks Completed Successfully] ---");
-        System.out.println("[Check] Look for 'demo_recovered.jpg' in your folder!");
+        } catch (IOException e) {
+            // Handle file access errors
+            System.err.println("[Error] Failed to process image: " + e.getMessage());
+        }
     }
 }
