@@ -8,13 +8,14 @@ Welcome to my Java learning repository. This is a collection of my projects, lab
 
 This is a logic-driven Java encryption suite designed for secure data transformation.
 
-### 📍 Current Progress:
-* **Level 1: SimpleShield** (Completed ✅)
-    * *Core*: Bitwise XOR (`^`) Stream Cipher.
-    * *Status*: Functional CLI version.
-* **Level 2: File Shredder** (Completed ✅)
-* **Level 3: Steganography** (Completed ✅)
-* *Core: LSB (Least Significant Bit) Pixel Manipulation.*
+# 🛡️ Java Crypto-Toolbox
+
+A logic-driven security suite exploring data transformation from basic bitwise operations to advanced digital steganography.
+
+### 🌟 Project Evolution
+- **L1: Bitwise Logic** - Mastered `^` XOR stream ciphers for text.
+- **L2: Byte Stream** - Handled raw binary data and file IO integrity.
+- **L3: Pixel Surgery** - Implemented LSB (Least Significant Bit) manipulation to hide data within image pixels without visual distortion.
 
 ---
 *Created with ❤️ by Qiananana*
