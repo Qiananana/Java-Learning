@@ -13,7 +13,8 @@ This is a logic-driven Java encryption suite designed for secure data transforma
     * *Core*: Bitwise XOR (`^`) Stream Cipher.
     * *Status*: Functional CLI version.
 * **Level 2: File Shredder** (Completed ✅)
-* **Level 3: Steganography** (Planned 🚧)
+* **Level 3: Steganography** (Completed ✅)
+* *Core: LSB (Least Significant Bit) Pixel Manipulation.*
 
 ---
 *Created with ❤️ by Qiananana*
