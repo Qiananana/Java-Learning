@@ -12,7 +12,7 @@ This is a logic-driven Java encryption suite designed for secure data transforma
 * **Level 1: SimpleShield** (Completed ✅)
     * *Core*: Bitwise XOR (`^`) Stream Cipher.
     * *Status*: Functional CLI version.
-* **Level 2: File Shredder** (Planned 🚧)
+* **Level 2: File Shredder** (Completed ✅)
 * **Level 3: Steganography** (Planned 🚧)
 
 ---
